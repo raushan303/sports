@@ -1,11 +1,31 @@
 import React from 'react'
+import { View,Text } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import ShopItemPage from './ShopItemPage';
-import ShopFrontPage from './ShopFrontPage';
 import ShopStartPage from './ShopStartPage';
 
+
+
+function News(){
+      return(
+            <View>
+                  <Text>
+                        News Page
+                  </Text>
+            </View>
+      )
+}
+
+function Score(){
+      return(
+            <View>
+                  <Text>
+                        Score Page
+                  </Text>
+            </View>
+      )
+}
 
 
 
@@ -21,8 +41,8 @@ export default function BottomTab() {
             shifting = {true}
       >
             <Tab.Screen
-                  name="Home"
-                  component={ShopFrontPage}
+                  name="Score"
+                  component={Score}
                   options={{
                         tabBarLabel: 'List',
                         tabBarColor: '#fff',
@@ -32,8 +52,8 @@ export default function BottomTab() {
                   }}
             />
             <Tab.Screen
-                  name="About"
-                  component={ShopItemPage}
+                  name="News"
+                  component={News}
                   options={{
                         tabBarLabel: 'Details',
                         tabBarColor: '#fff',

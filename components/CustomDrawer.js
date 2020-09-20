@@ -39,34 +39,34 @@ export function DrawerContent(props) {
                   <List.Accordion
                         left={(props) => 
                               <View style={{flexDirection:"row"}}>
-                                    <Button onPress={()=>{props.navigation.navigate('Home')}}>Item</Button>
+                                    <Button onPress={()=>{props.navigation.navigate('List')}}>Item</Button>
                               </View>
                         }
                   >
-                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('Home')}}/>
-                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('Home')}}/>                  
+                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('List')}}/>
+                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('List')}}/>                  
                   </List.Accordion>
 
                   <List.Accordion
                         left={(props) => 
                               <View style={{flexDirection:"row"}}>
-                                    <Button onPress={()=>{props.navigation.navigate('Home')}}>Item</Button>
+                                    <Button onPress={()=>{props.navigation.navigate('List')}}>Item</Button>
                               </View>
                         }
                   >
-                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('Home')}}/>
-                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('Home')}}/>                  
+                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('List')}}/>
+                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('List')}}/>                  
                   </List.Accordion>
 
                   <List.Accordion
                         left={(props) => 
                               <View style={{flexDirection:"row"}}>
-                                    <Button onPress={()=>{props.navigation.navigate('Home')}}>Item</Button>
+                                    <Button onPress={()=>{props.navigation.navigate('List')}}>Item</Button>
                               </View>
                         }
                   >
-                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('Home')}}/>
-                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('Home')}}/>                  
+                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('List')}}/>
+                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('List')}}/>                  
                   </List.Accordion>
 
             </List.Section>
