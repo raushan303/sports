@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
             marginTop:"5%"
       },
       sI_related_item_container:{
-            height:500
+            height:500,
+            marginBottom:40
       },
       sI_related_item:{
             width:250,

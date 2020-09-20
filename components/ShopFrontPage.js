@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView} from 'react-native';
 
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Avatar, Button, Card, Title, Paragraph, Appbar } from 'react-native-paper';
 
 
 const styles = StyleSheet.create({
@@ -34,6 +34,19 @@ export default function ShopFrontPage(props) {
 	return(
 
 		<ScrollView style={styles.s_container}>
+
+		<Appbar.Header style={{height:30}}>
+			<Appbar.Content style={{marginTop:-30}} title="Title" subtitle="Subtitle" />
+			<Appbar.Action  style={{marginTop:-25}} icon="menu" size={35} 
+				onPress={()=>{
+					if(props.navigation)
+						props.navigation.openDrawer();
+					else
+						alert("hello")
+				}} 
+			/>
+		</Appbar.Header>
+
 	<View style={styles.s_row}>
 		<View style={styles.s_col}>
 		<Card>
@@ -84,7 +97,7 @@ export default function ShopFrontPage(props) {
 		</View>
 	</View>
 
-	<View style={styles.s_row}>
+	<View style={[styles.s_row,{marginBottom:20}]}>
 		<View style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt5.jpg")} />
