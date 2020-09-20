@@ -1,139 +1,179 @@
-import React, { useContext,useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import React,{useState} from 'react';
+
+import{View,StyleSheet} from 'react-native'
+
+import{DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer'
 
 import {
-    DrawerContentScrollView,
-    DrawerItem
-} from '@react-navigation/drawer';
-
-import {
-    useTheme,
-    Avatar,
-    Title,
-    Caption,
-    Paragraph,
-    Drawer,
-    Text,
-    TouchableRipple,
-    Switch,
-    Button, Menu, Divider, Provider,
+    Button,
     List
 } from 'react-native-paper';
 
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-
-const arr=["raju","pappu"];
-
-export function DrawerContent(props) {
-
+export function DrawerContent(props){
 
       return (
-            <View style={{flex: 1}}>
-
-            <DrawerContentScrollView {...props}>
-            <Drawer.Section style={styles.drawerSection}>
-
-            <List.Section title="Shop">
-
-                  <List.Accordion
-                        left={(props) => 
-                              <View style={{flexDirection:"row"}}>
-                                    <Button onPress={()=>{props.navigation.navigate('List')}}>Item</Button>
-                              </View>
-                        }
-                  >
-                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('List')}}/>
-                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('List')}}/>                  
-                  </List.Accordion>
-
-                  <List.Accordion
-                        left={(props) => 
-                              <View style={{flexDirection:"row"}}>
-                                    <Button onPress={()=>{props.navigation.navigate('List')}}>Item</Button>
-                              </View>
-                        }
-                  >
-                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('List')}}/>
-                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('List')}}/>                  
-                  </List.Accordion>
-
-                  <List.Accordion
-                        left={(props) => 
-                              <View style={{flexDirection:"row"}}>
-                                    <Button onPress={()=>{props.navigation.navigate('List')}}>Item</Button>
-                              </View>
-                        }
-                  >
-                        <List.Item title="First item" onPress={()=>{props.navigation.navigate('List')}}/>
-                        <List.Item title="Second item" onPress={()=>{props.navigation.navigate('List')}}/>                  
-                  </List.Accordion>
-
-            </List.Section>
-
             
-            </Drawer.Section>
-            </DrawerContentScrollView>
+      <View style={styles.drawerContent}>
 
-            </View>
+      <DrawerContentScrollView {...props}>
+
+      <List.Section title="Shop">
+
+            <List.Accordion
+                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Mens</Button>}      
+            >
+                  
+                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+
+                  <List.Accordion
+                        title="Clothings"
+                        left={props => <List.Icon {...props} icon="tshirt-crew" />}
+                        onPress={()=>props.navigation.navigate('List')}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+
+                  </List.Accordion>
+
+                  <List.Accordion
+                        title="Accessories"
+                        left={props => <List.Icon {...props} icon="basketball" />}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+
+                  </List.Accordion>
+            
+            </List.Accordion>
+
+      {/** Nextt ***/}
+
+
+            <List.Accordion
+                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Womens</Button>}      
+            >
+                  
+                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+
+                  <List.Accordion
+                        title="Clothings"
+                        left={props => <List.Icon {...props} icon="tshirt-crew" />}
+                        onPress={()=>props.navigation.navigate('List')}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+
+                  </List.Accordion>
+
+                  <List.Accordion
+                        title="Accessories"
+                        left={props => <List.Icon {...props} icon="basketball" />}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+
+                  </List.Accordion>
+            
+            </List.Accordion>
+
+      {/** Nextt ***/}
+
+            <List.Accordion
+                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Youths</Button>}      
+            >
+                  
+                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+                  <List.Accordion
+                        title="Clothings"
+                        left={props => <List.Icon {...props} icon="tshirt-crew" />}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+                  </List.Accordion>
+
+                  <List.Accordion
+                        title="Accessories"
+                        left={props => <List.Icon {...props} icon="basketball" />}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+
+                  </List.Accordion>
+            
+            </List.Accordion>
+
+      {/** Nextt ***/}
+
+            <List.Accordion
+                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Mens</Button>}      
+            >
+
+            <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+
+                  <List.Accordion
+                        title="Clothings"
+                        left={props => <List.Icon {...props} icon="tshirt-crew" />}
+                        onPress={()=>props.navigation.navigate('List')}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+
+                  </List.Accordion>
+
+                  <List.Accordion
+                        title="Accessories"
+                        left={props => <List.Icon {...props} icon="basketball" />}
+                        style={{marginLeft:10}}
+                  >
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+
+                  </List.Accordion>
+            
+            </List.Accordion>
+
+
+      {/** Nextt ***/}
+
+            <List.Accordion
+                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Accessories</Button>}  
+            >
+                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
+                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
+                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
+                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+            </List.Accordion>
+            
+      {/** Nextt ***/}
+                  
+            <List.Item left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Sale !</Button>}   />
+
+      </List.Section>
+
+      </DrawerContentScrollView>
+
+      </View>
+
       )
-} 
+}
 
 const styles = StyleSheet.create({
-
-      menuItem:{
-            // marginLeft:80,
-            height:50,
-            shadowOpacity:0,
-            elevation:0
-      },
-      nested_drawer:{
-            width:"80%",
-            marginLeft:"20%",
-            borderWidth:0
-      },
       drawerContent: {
             flex: 1,
-      },
-      userInfoSection: {
-            paddingLeft: 20,
-      },
-      title: {
-            fontSize: 16,
-            marginTop: 3,
-            fontWeight: 'bold',
-      },
-      caption: {
-            fontSize: 14,
-            lineHeight: 14,
-      },
-      row: {
-            marginTop: 20,
-            flexDirection: 'row',
-            alignItems: 'center',
-      },
-      section: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginRight: 15,
-      },
-      paragraph: {
-            fontWeight: 'bold',
-            marginRight: 3,
+            marginTop:0
       },
       drawerSection: {
             marginTop: 15,
-            // backgroundColor:"red"
       },
-      bottomDrawerSection: {
-            marginBottom: 15,
-            borderTopColor: '#f4f4f4',
-            borderTopWidth: 1
-      },
-      preference: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingVertical: 12,
-            paddingHorizontal: 16,
-      }
-})
+});

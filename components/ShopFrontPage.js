@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView} from 'react-native';
 
-import { Avatar, Button, Card, Title, Paragraph, Appbar } from 'react-native-paper';
+import { Avatar, Card, Title, Paragraph, Appbar } from 'react-native-paper';
+import Button from 'apsl-react-native-button';
 
 
 const styles = StyleSheet.create({
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
 	s_col:{
 		width:"49%",
 		height:"100%",
+		borderWidth:0,
 	},
 	s_price:{
 		fontSize:20,
@@ -26,29 +28,23 @@ const styles = StyleSheet.create({
 	}
 })
 
-
-
-
-
 export default function ShopFrontPage(props) {
+	
 	return(
 
 		<ScrollView style={styles.s_container}>
 
 		<Appbar.Header style={{height:30}}>
-			<Appbar.Content style={{marginTop:-30}} title="Title" subtitle="Subtitle" />
+			<Appbar.Content style={{marginTop:-30}} title="Item" subtitle="Special Offer" />
 			<Appbar.Action  style={{marginTop:-25}} icon="menu" size={35} 
-				onPress={()=>{
-					if(props.navigation)
-						props.navigation.openDrawer();
-					else
-						alert("hello")
-				}} 
+				onPress={()=>{props.navigation.openDrawer();}} 
 			/>
 		</Appbar.Header>
 
 	<View style={styles.s_row}>
-		<View style={styles.s_col}>
+
+
+		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt1.jpg")} />
 
@@ -57,9 +53,9 @@ export default function ShopFrontPage(props) {
 				<Paragraph style={styles.s_price}>50$</Paragraph>
 			</Card.Content>
 		</Card>
-		</View>
+		</Button>
 
-		<View style={styles.s_col}>
+		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt2.jpg")} />
 
@@ -69,11 +65,13 @@ export default function ShopFrontPage(props) {
 			</Card.Content>
 
 		</Card>
-		</View>
+		</Button>
+
 	</View>
 
 	<View style={styles.s_row}>
-		<View style={styles.s_col}>
+
+		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt3.jpg")} />
 
@@ -82,9 +80,9 @@ export default function ShopFrontPage(props) {
 				<Paragraph style={styles.s_price}>50$</Paragraph>
 			</Card.Content>
 		</Card>
-		</View>
+		</Button>
 
-		<View style={styles.s_col}>
+		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt4.jpg")} />
 
@@ -94,11 +92,13 @@ export default function ShopFrontPage(props) {
 			</Card.Content>
 
 		</Card>
-		</View>
+		</Button>
+
 	</View>
 
 	<View style={[styles.s_row,{marginBottom:20}]}>
-		<View style={styles.s_col}>
+		
+		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt5.jpg")} />
 
@@ -107,9 +107,9 @@ export default function ShopFrontPage(props) {
 				<Paragraph style={styles.s_price}>50$</Paragraph>
 			</Card.Content>
 		</Card>
-		</View>
+		</Button>
 
-		<View style={styles.s_col}>
+		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
 			<Card.Cover source={require("../assets/tshirt6.jpg")} />
 
@@ -119,7 +119,8 @@ export default function ShopFrontPage(props) {
 			</Card.Content>
 
 		</Card>
-		</View>
+		</Button>
+
 	</View>
 
 		</ScrollView>

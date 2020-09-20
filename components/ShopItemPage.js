@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, ScrollView} from 'react-native';
 import Button from 'apsl-react-native-button';
 
 import Unorderedlist from 'react-native-unordered-list';
+import InputSpinner from "react-native-input-spinner";
 
-import { Avatar, Card, Title, Paragraph } from 'react-native-paper';
+import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 
 
 const styles = StyleSheet.create({
@@ -15,8 +16,7 @@ const styles = StyleSheet.create({
 	},
 	sI_row:{
 		marginTop:"3%",
-            width:"100%",
-            marginTop:"5%"
+            width:"100%"
       },
       sI_slider:{
             width:390,
@@ -28,12 +28,13 @@ const styles = StyleSheet.create({
             marginLeft:29
       },
       sI_content:{
-            marginTop:"5%",    
+            marginTop:"10%",    
       },
       sI_content_button:{
             display:"flex",
             flexDirection:"row",
-            flexWrap:"wrap"
+            flexWrap:"wrap",
+            marginBottom:50
       },
       sI_paragraph:{
             fontSize:20,
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
             borderRadius:30,
             backgroundColor:"#58B19F",
             borderWidth:0,
-            marginBottom:50
+            marginBottom:80
       },
       sI_details:{
             backgroundColor:"#CAD3C8",
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
       
 })
 
-const size_array=['S','XS','L','XL','M'];
+const size_array=['S','XS','L','XL','M','L','T'];
 
 const details=[
       "Regular fit is wider at the body, with a straight silhouette",
@@ -132,19 +133,27 @@ function RelatedItem(props){
 }
 
 
-export default function ShopItemPage(){
+export default function ShopItemPage(props){
       
       const [selected,setSelected]=useState(-1); 
 
       return(
             <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
+
+                  <Appbar.Header style={{height:30}}>
+                        <Appbar.Content style={{marginTop:-30}} title="T-shirt" subtitle="Details" />
+                        <Appbar.Action  style={{marginTop:-25}} icon="arrow-left" size={35} 
+                              onPress={()=>{props.navigation.goBack();}} 
+                        />
+                  </Appbar.Header>
                  
-                  <Card style={styles.sI_row}>
+                  <Card>
 
                   <ScrollView 
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         pagingEnabled
+                        style={{marginTop:30}}
                   >
                         <View style={styles.sI_slider}>
 			            <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
@@ -156,7 +165,7 @@ export default function ShopItemPage(){
                               <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
                         </View>
                   </ScrollView>
-
+                  <View style={{backgroundColor:"#f5f6fa",marginTop:50}}>
 			<Card.Content style={styles.sI_content}>
 				<Paragraph style={styles.sI_paragraph}>fitternity Marvel Strength Cotton Tshirt for Men - Official Disney Marvel Merchandise - Round Collar - Half Sleeves - White Colour</Paragraph>
 				<Paragraph style={styles.sI_price}>50$</Paragraph>
@@ -167,11 +176,27 @@ export default function ShopItemPage(){
                   {
                         size_array.map((size,index)=>{
                               return(
-                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} color="green" onPress={()=>{setSelected(index)}} key={index} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
+                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
                               );
                         })
                   }
                   </Card.Content>
+                  </View>
+
+                  <Title style={{marginLeft:155,marginTop:50}}>Quantity</Title>
+
+                  <InputSpinner
+                        min={1}
+                        step={1}
+                        value={1}
+                        style={{marginLeft:100,marginTop:10,marginBottom:25,width:180}}
+                        showBorder={true}
+                        rounded={false}
+                        color={"#58B19F"}
+                        onChange={(num) => {
+                              console.log(num);
+                        }}
+                  />
 
                   <Card.Actions>
 		            <Button textStyle={{color:"white"}} style={styles.sI_addCart}>Add To Cart</Button>
