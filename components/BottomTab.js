@@ -44,7 +44,7 @@ export default function BottomTab() {
                   name="Score"
                   component={Score}
                   options={{
-                        tabBarLabel: 'List',
+                        tabBarLabel: 'Score',
                         tabBarColor: '#fff',
                         tabBarIcon: ({ color }) => (
                               <MaterialCommunityIcons name="home" color='#000000' size={26} />
@@ -55,7 +55,7 @@ export default function BottomTab() {
                   name="News"
                   component={News}
                   options={{
-                        tabBarLabel: 'Details',
+                        tabBarLabel: 'News',
                         tabBarColor: '#fff',
                         tabBarIcon: ({ color }) => (
                               <MaterialCommunityIcons name="details" color='#000000' size={26} />

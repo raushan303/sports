@@ -11,8 +11,7 @@ import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 const styles = StyleSheet.create({
 	sI_container:{
             marginTop:"8%",
-            width:"100%",
-            height:600
+            width:"100%"
 	},
 	sI_row:{
 		marginTop:"3%",
@@ -133,7 +132,7 @@ function RelatedItem(props){
 }
 
 
-export default function ShopItemPage(props){
+export default function ShopDetailsPage(props){
       
       const [selected,setSelected]=useState(-1); 
 
@@ -141,9 +140,15 @@ export default function ShopItemPage(props){
             <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
 
                   <Appbar.Header style={{height:30}}>
-                        <Appbar.Content style={{marginTop:-30}} title="T-shirt" subtitle="Details" />
-                        <Appbar.Action  style={{marginTop:-25}} icon="arrow-left" size={35} 
+                        <Appbar.Action  style={{marginTop:-25}} icon="arrow-left" size={30} 
                               onPress={()=>{props.navigation.goBack();}} 
+                        />
+                        <Appbar.Content style={{marginTop:-30}} title="T-shirt" subtitle="Details" />
+                        <Appbar.Action  style={{marginTop:-25}} icon="magnify" size={30} 
+                              onPress={()=>{props.navigation.navigate("Search");}} 
+                        />
+                        <Appbar.Action  style={{marginTop:-25}} icon="cart" size={30} 
+                              onPress={()=>{props.navigation.navigate("Cart");}} 
                         />
                   </Appbar.Header>
                  
@@ -199,7 +204,7 @@ export default function ShopItemPage(props){
                   />
 
                   <Card.Actions>
-		            <Button textStyle={{color:"white"}} style={styles.sI_addCart}>Add To Cart</Button>
+		            <Button onPress={()=>{props.navigation.navigate('Cart')}} textStyle={{color:"white"}} style={styles.sI_addCart}>Add To Cart</Button>
 	            </Card.Actions>
 
                   <Card.Content style={styles.sI_details}>

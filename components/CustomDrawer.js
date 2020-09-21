@@ -20,18 +20,18 @@ export function DrawerContent(props){
       <List.Section title="Shop">
 
             <List.Accordion
-                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Mens</Button>}      
+                  left={() => <Button  onPress={() =>props.navigation.navigate('Items')}>Mens</Button>}      
             >
                   
-                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('Items')} />
 
                   <List.Accordion
                         title="Clothings"
                         left={props => <List.Icon {...props} icon="tshirt-crew" />}
-                        onPress={()=>props.navigation.navigate('List')}
+                        onPress={()=>props.navigation.navigate('Items')}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Second item" />
 
                   </List.Accordion>
 
@@ -40,10 +40,10 @@ export function DrawerContent(props){
                         left={props => <List.Icon {...props} icon="basketball" />}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Jwelleries" />
 
                   </List.Accordion>
             
@@ -53,18 +53,18 @@ export function DrawerContent(props){
 
 
             <List.Accordion
-                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Womens</Button>}      
+                  left={() => <Button  onPress={() =>props.navigation.navigate('Items')}>Womens</Button>}      
             >
                   
-                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('Items')} />
 
                   <List.Accordion
                         title="Clothings"
                         left={props => <List.Icon {...props} icon="tshirt-crew" />}
-                        onPress={()=>props.navigation.navigate('List')}
+                        onPress={()=>props.navigation.navigate('Items')}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Second item" />
 
                   </List.Accordion>
 
@@ -73,10 +73,10 @@ export function DrawerContent(props){
                         left={props => <List.Icon {...props} icon="basketball" />}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Jwelleries" />
 
                   </List.Accordion>
             
@@ -85,16 +85,16 @@ export function DrawerContent(props){
       {/** Nextt ***/}
 
             <List.Accordion
-                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Youths</Button>}      
+                  left={() => <Button  onPress={() =>props.navigation.navigate('Items')}>Youths</Button>}      
             >
                   
-                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+                  <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('Items')} />
                   <List.Accordion
                         title="Clothings"
                         left={props => <List.Icon {...props} icon="tshirt-crew" />}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Second item" />
                   </List.Accordion>
 
                   <List.Accordion
@@ -102,10 +102,10 @@ export function DrawerContent(props){
                         left={props => <List.Icon {...props} icon="basketball" />}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Jwelleries" />
 
                   </List.Accordion>
             
@@ -114,18 +114,18 @@ export function DrawerContent(props){
       {/** Nextt ***/}
 
             <List.Accordion
-                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Mens</Button>}      
+                  left={() => <Button  onPress={() =>props.navigation.navigate('Items')}>Mens</Button>}      
             >
 
-            <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('List')} />
+            <List.Item left={props => <List.Icon {...props} icon="soccer" />} title="Football Kits" onPress={()=>props.navigation.navigate('Items')} />
 
                   <List.Accordion
                         title="Clothings"
                         left={props => <List.Icon {...props} icon="tshirt-crew" />}
-                        onPress={()=>props.navigation.navigate('List')}
+                        onPress={()=>props.navigation.navigate('Items')}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Second item" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Second item" />
 
                   </List.Accordion>
 
@@ -134,10 +134,10 @@ export function DrawerContent(props){
                         left={props => <List.Icon {...props} icon="basketball" />}
                         style={{marginLeft:10}}
                   >
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
-                        <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Bags and Luggage" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Drinks" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Gloves" />
+                        <List.Item onPress={()=>props.navigation.navigate('Items')} title="Jwelleries" />
 
                   </List.Accordion>
             
@@ -147,17 +147,17 @@ export function DrawerContent(props){
       {/** Nextt ***/}
 
             <List.Accordion
-                  left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Accessories</Button>}  
+                  left={() => <Button  onPress={() =>props.navigation.navigate('Items')}>Accessories</Button>}  
             >
-                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Bags and Luggage" />
-                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Drinks" />
-                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Gloves" />
-                  <List.Item onPress={()=>props.navigation.navigate('List')} title="Jwelleries" />
+                  <List.Item onPress={()=>props.navigation.navigate('Items')} title="Bags and Luggage" />
+                  <List.Item onPress={()=>props.navigation.navigate('Items')} title="Drinks" />
+                  <List.Item onPress={()=>props.navigation.navigate('Items')} title="Gloves" />
+                  <List.Item onPress={()=>props.navigation.navigate('Items')} title="Jwelleries" />
             </List.Accordion>
             
       {/** Nextt ***/}
                   
-            <List.Item left={() => <Button  onPress={() =>props.navigation.navigate('List')}>Sale !</Button>}   />
+            <List.Item left={() => <Button  onPress={() =>props.navigation.navigate('Items')}>Sale !</Button>}   />
 
       </List.Section>
 
