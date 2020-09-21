@@ -7,6 +7,156 @@ import InputSpinner from "react-native-input-spinner";
 
 import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 
+const size_array=['S','XS','L','XL','M','L','T'];
+
+const details=[
+      "Regular fit is wider at the body, with a straight silhouette",
+      "Ribbed V-Neck",
+      "Short sleeves",
+      "100% recycled polyester interlock",
+      "Sweat-wicking Climalite fabric",
+      "Real Madrid crest"
+]
+
+function RelatedItem(props){
+      return(
+		<Card onPress={()=>{props.navigation.navigate("Details")}} style={styles.sI_related_item}>
+			<Card.Cover style={styles.sI_related_image} source={props.img} />
+
+			<Card.Content>
+				<Paragraph>CHKOKKO Men Gym Tank Tops Sports Sleeveless Vest</Paragraph>
+				<Paragraph style={{marginLeft:100,fontSize:25,marginTop:5,lineHeight:30}}>50$</Paragraph>
+			</Card.Content>
+		</Card>
+      );
+}
+
+
+export default function ShopDetailsPage(props){
+      
+      const [selected,setSelected]=useState(-1); 
+
+      return(
+            <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
+
+                  <Appbar.Header style={{height:30}}>
+                        <Appbar.Action  style={{marginTop:-25}} icon="arrow-left" size={30} 
+                              onPress={()=>{props.navigation.goBack();}} 
+                        />
+                        <Appbar.Content style={{marginTop:-30}} title="T-shirt" subtitle="Details" />
+                        <Appbar.Action  style={{marginTop:-25}} icon="magnify" size={30} 
+                              onPress={()=>{props.navigation.navigate("Search");}} 
+                        />
+                        <Appbar.Action  style={{marginTop:-25}} icon="cart" size={30} 
+                              onPress={()=>{props.navigation.navigate("Cart");}} 
+                        />
+                  </Appbar.Header>
+                 
+                  <Card>
+
+                  <ScrollView 
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={true}
+                        pagingEnabled
+                        style={{marginTop:30}}
+                  >
+                        <View style={styles.sI_slider}>
+			            <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
+			      </View>
+                        <View style={styles.sI_slider}>
+                              <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
+			      </View>
+                        <View style={styles.sI_slider}>
+                              <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
+                        </View>
+                  </ScrollView>
+                  
+                  <View style={{backgroundColor:"#f5f6fa",marginTop:50}}>
+                  <Card.Content style={styles.sI_content}>
+				<Paragraph style={styles.sI_paragraph}>fitternity Marvel Strength Cotton Tshirt for Men - Official Disney Marvel Merchandise - Round Collar - Half Sleeves - White Colour</Paragraph>
+				<Paragraph style={styles.sI_price}>50$</Paragraph>
+                        <Title>Select Size</Title>
+			</Card.Content>
+
+                  <Card.Content style={styles.sI_content_button}>
+                  {
+                        size_array.map((size,index)=>{
+                              return(
+                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
+                              );
+                        })
+                  }
+                  </Card.Content>
+                  </View>
+
+                  <Title style={{marginLeft:155,marginTop:50}}>Quantity</Title>
+
+                  <InputSpinner
+                        min={1}
+                        step={1}
+                        value={1}
+                        style={{marginLeft:100,marginTop:10,marginBottom:25,width:180}}
+                        showBorder={true}
+                        rounded={false}
+                        color={"#58B19F"}
+                        onChange={(num) => {
+                              console.log(num);
+                        }}
+                  />
+
+                  <Card.Actions>
+		            <Button onPress={()=>{props.navigation.navigate('Cart')}} textStyle={{color:"white"}} style={styles.sI_addCart}>Add To Cart</Button>
+	            </Card.Actions>
+
+                  <Card.Content style={styles.sI_details}>
+                        <Title style={styles.sI_prod_title1}>Product Details</Title>
+                        <Paragraph style={styles.sI_prod_paragraph1}>As the stadium fills, the buzz cascades down onto the Bernabéu pitch. But Real Madrid's superstars only have their minds on the ninety minutes ahead of them. Soft and moisture-absorbing, this adidas pre-match jersey keeps them dry and confident throughout those last-minute preparations. Its lightweight build will ensure it's a mainstay in your kit bag.</Paragraph>
+                        <Title style={styles.sI_prod_title2}>Details</Title>
+                        
+                        <View style={styles.sI_prod_paragraph2}>
+                        {
+
+                        details.map((detail,index)=>{
+                              return(
+                                    <Unorderedlist key={index}>
+                                    <Paragraph>
+                                          {detail}  
+                                    </Paragraph>
+                                    </Unorderedlist>
+                              );
+                        })
+                             
+                        }
+                        </View>
+                  </Card.Content>
+
+		      </Card>
+
+                  <View style={styles.sI_related_item_container}>
+
+                        <Title style={{textAlign:"center",marginTop:40,fontSize:30}}>Finish The Look</Title>
+
+                  <ScrollView
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        style={{marginTop:40}}
+                  >
+                        <RelatedItem {...props} img={require("../assets/tshirt1.jpg")}/>
+                        <RelatedItem {...props} img={require("../assets/tshirt2.jpg")}/>
+                        <RelatedItem {...props} img={require("../assets/tshirt3.jpg")}/>
+                        <RelatedItem {...props} img={require("../assets/tshirt4.jpg")}/>
+                        <RelatedItem {...props} img={require("../assets/tshirt5.jpg")}/>
+                        <RelatedItem {...props} img={require("../assets/tshirt6.jpg")}/>
+
+                  </ScrollView>
+
+                  </View>
+                 
+            </ScrollView>
+      );
+}
+
+
 
 const styles = StyleSheet.create({
 	sI_container:{
@@ -95,7 +245,7 @@ const styles = StyleSheet.create({
       },
       sI_related_item:{
             width:250,
-            height:300,
+            height:400,
             marginLeft:20,
       },
       sI_related_image:{
@@ -103,157 +253,4 @@ const styles = StyleSheet.create({
       }
       
 })
-
-const size_array=['S','XS','L','XL','M','L','T'];
-
-const details=[
-      "Regular fit is wider at the body, with a straight silhouette",
-      "Ribbed V-Neck",
-      "Short sleeves",
-      "100% recycled polyester interlock",
-      "Sweat-wicking Climalite fabric",
-      "Real Madrid crest"
-]
-
-function RelatedItem(props){
-      return(
-            
-		<View style={styles.sI_related_item}>
-		<Card>
-			<Card.Cover style={styles.sI_related_image} source={props.img} />
-
-			<Card.Content>
-				<Paragraph>CHKOKKO Men Gym Tank Tops Sports Sleeveless Vest</Paragraph>
-				<Paragraph style={styles.s_price}>50$</Paragraph>
-			</Card.Content>
-		</Card>
-		</View>
-      );
-}
-
-
-export default function ShopDetailsPage(props){
-      
-      const [selected,setSelected]=useState(-1); 
-
-      return(
-            <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
-
-                  <Appbar.Header style={{height:30}}>
-                        <Appbar.Action  style={{marginTop:-25}} icon="arrow-left" size={30} 
-                              onPress={()=>{props.navigation.goBack();}} 
-                        />
-                        <Appbar.Content style={{marginTop:-30}} title="T-shirt" subtitle="Details" />
-                        <Appbar.Action  style={{marginTop:-25}} icon="magnify" size={30} 
-                              onPress={()=>{props.navigation.navigate("Search");}} 
-                        />
-                        <Appbar.Action  style={{marginTop:-25}} icon="cart" size={30} 
-                              onPress={()=>{props.navigation.navigate("Cart");}} 
-                        />
-                  </Appbar.Header>
-                 
-                  <Card>
-
-                  <ScrollView 
-                        showsHorizontalScrollIndicator={false}
-                        horizontal={true}
-                        pagingEnabled
-                        style={{marginTop:30}}
-                  >
-                        <View style={styles.sI_slider}>
-			            <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
-			      </View>
-                        <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
-			      </View>
-                        <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
-                        </View>
-                  </ScrollView>
-                  <View style={{backgroundColor:"#f5f6fa",marginTop:50}}>
-			<Card.Content style={styles.sI_content}>
-				<Paragraph style={styles.sI_paragraph}>fitternity Marvel Strength Cotton Tshirt for Men - Official Disney Marvel Merchandise - Round Collar - Half Sleeves - White Colour</Paragraph>
-				<Paragraph style={styles.sI_price}>50$</Paragraph>
-                        <Title>Select Size</Title>
-			</Card.Content>
-
-                  <Card.Content style={styles.sI_content_button}>
-                  {
-                        size_array.map((size,index)=>{
-                              return(
-                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
-                              );
-                        })
-                  }
-                  </Card.Content>
-                  </View>
-
-                  <Title style={{marginLeft:155,marginTop:50}}>Quantity</Title>
-
-                  <InputSpinner
-                        min={1}
-                        step={1}
-                        value={1}
-                        style={{marginLeft:100,marginTop:10,marginBottom:25,width:180}}
-                        showBorder={true}
-                        rounded={false}
-                        color={"#58B19F"}
-                        onChange={(num) => {
-                              console.log(num);
-                        }}
-                  />
-
-                  <Card.Actions>
-		            <Button onPress={()=>{props.navigation.navigate('Cart')}} textStyle={{color:"white"}} style={styles.sI_addCart}>Add To Cart</Button>
-	            </Card.Actions>
-
-                  <Card.Content style={styles.sI_details}>
-                        <Title style={styles.sI_prod_title1}>Product Details</Title>
-                        <Paragraph style={styles.sI_prod_paragraph1}>As the stadium fills, the buzz cascades down onto the Bernabéu pitch. But Real Madrid's superstars only have their minds on the ninety minutes ahead of them. Soft and moisture-absorbing, this adidas pre-match jersey keeps them dry and confident throughout those last-minute preparations. Its lightweight build will ensure it's a mainstay in your kit bag.</Paragraph>
-                        <Title style={styles.sI_prod_title2}>Details</Title>
-                        
-                        <View style={styles.sI_prod_paragraph2}>
-                        {
-
-                        details.map((detail,index)=>{
-                              return(
-                                    <Unorderedlist key={index}>
-                                    <Paragraph>
-                                          {detail}  
-                                    </Paragraph>
-                                    </Unorderedlist>
-                              );
-                        })
-                             
-                        }
-                        </View>
-                  </Card.Content>
-
-		      </Card>
-
-                  <View style={styles.sI_related_item_container}>
-
-                        <Title style={{textAlign:"center",marginTop:40,fontSize:30}}>Finish The Look</Title>
-
-                  <ScrollView
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        style={{marginTop:40}}
-                  >
-                        <RelatedItem img={require("../assets/tshirt1.jpg")}/>
-                        <RelatedItem img={require("../assets/tshirt2.jpg")}/>
-                        <RelatedItem img={require("../assets/tshirt3.jpg")}/>
-                        <RelatedItem img={require("../assets/tshirt4.jpg")}/>
-                        <RelatedItem img={require("../assets/tshirt5.jpg")}/>
-                        <RelatedItem img={require("../assets/tshirt6.jpg")}/>
-
-                  </ScrollView>
-
-                  </View>
-                 
-            </ScrollView>
-
-
-      );
-}
 
