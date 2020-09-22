@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView} from 'react-native';
 import { Avatar, Card, Title, Paragraph, Appbar } from 'react-native-paper';
 import Button from 'apsl-react-native-button';
 
+import { Data } from '../../shared/TshirtData';
 
 const styles = StyleSheet.create({
 	s_container:{

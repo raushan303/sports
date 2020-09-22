@@ -7,6 +7,8 @@ import InputSpinner from "react-native-input-spinner";
 
 import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 
+import { Data } from '../../shared/TshirtData';
+
 const size_array=['S','XS','L','XL','M','L','T'];
 
 const details=[

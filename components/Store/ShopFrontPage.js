@@ -5,16 +5,22 @@ import Swiper from 'react-native-swiper'
 import { Avatar, Card, Title, Paragraph, Appbar, Divider} from 'react-native-paper';
 import Button from 'apsl-react-native-button';
 
+import { Data } from '../../shared/TshirtData';
 
 function FavouritesItem(props){
-      return(
-             
-		<Card onPress={()=>{props.navigation.navigate("Details")}} style={styles.F_favourites_item}>
-			<Card.Cover style={{height:265,width:"90%",marginLeft:"5%",marginTop:5}} source={props.img} />
 
+      var ItemName= props.Paragraph;
+
+      if(ItemName.length>70){
+            ItemName = ItemName.substring(0,65)+"....";
+      }
+
+      return( 
+		<Card onPress={()=>{props.navigation.navigate("Details",{_id:props._id})}} style={styles.F_favourites_item}>
+			<Card.Cover style={{height:265,width:"90%",marginLeft:"5%",marginTop:5}} source={props.img} />
 			<Card.Content>
-				<Paragraph>CHKOKKO Men Gym Tank Tops Sports Sleeveless Vest</Paragraph>
-				<Paragraph style={{marginLeft:115,fontSize:25,marginTop:5,lineHeight:30}}>50$</Paragraph>
+                        <Paragraph>{ItemName}</Paragraph>
+                        <Paragraph style={{textAlign:"center",fontSize:25,marginTop:5,lineHeight:30}}>{props.price}$</Paragraph>
 			</Card.Content>
 		</Card>
       );
@@ -83,12 +89,14 @@ export default function ShopFrontPage(props){
                   dotStyle={{marginLeft:18,marginRight:18,marginBottom:18}}
                   activeDotStyle={{marginLeft:18,marginRight:18,marginBottom:18}}
             >
-                        <FavouritesItem {...props} img={require("../../assets/tshirt1.jpg")}/>
-                        <FavouritesItem {...props} img={require("../../assets/tshirt2.jpg")}/>
-                        <FavouritesItem {...props} img={require("../../assets/tshirt3.jpg")}/>
-                        <FavouritesItem {...props} img={require("../../assets/tshirt4.jpg")}/>
-                        <FavouritesItem {...props} img={require("../../assets/tshirt5.jpg")}/>
-                        <FavouritesItem {...props} img={require("../../assets/tshirt6.jpg")}/>
+            {
+                  Data.map((data,index)=>{
+                        return(
+                              <FavouritesItem key={index} {...props} _id={data._id} img={data.img} Paragraph={data.Paragraph} price={data.price} />
+                        );
+                  })
+            }
+
             </Swiper>
             </View>
 
@@ -117,7 +125,7 @@ export default function ShopFrontPage(props){
 const styles = StyleSheet.create({
       wrapper: {
             height:400,
-            marginTop:15
+            marginTop:0
       },
       F_img:{
             height:400

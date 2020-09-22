@@ -6,6 +6,8 @@ import {Appbar, Title, Card, Paragraph, Button} from 'react-native-paper';
 import InputSpinner from "react-native-input-spinner";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import { Data } from '../../shared/TshirtData';
+
 const styles = StyleSheet.create({
       C_row:{
             display:"flex", 
