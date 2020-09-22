@@ -53,7 +53,7 @@ export default function ShopFrontPage(props) {
 
 		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
-			<Card.Cover source={require("../assets/tshirt1.jpg")} />
+			<Card.Cover source={require("../../assets/tshirt1.jpg")} />
 
 			<Card.Content>
 				<Paragraph>Veirdo Men's Regular Fit T-Shirt</Paragraph>
@@ -64,7 +64,7 @@ export default function ShopFrontPage(props) {
 
 		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
-			<Card.Cover source={require("../assets/tshirt2.jpg")} />
+			<Card.Cover source={require("../../assets/tshirt2.jpg")} />
 
 			<Card.Content>
 				<Paragraph>Wrath Men's Regular Fit T-Shirt</Paragraph>
@@ -80,7 +80,7 @@ export default function ShopFrontPage(props) {
 
 		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
-			<Card.Cover source={require("../assets/tshirt3.jpg")} />
+			<Card.Cover source={require("../../assets/tshirt3.jpg")} />
 
 			<Card.Content>
 				<Paragraph>CHKOKKO Men Gym Tank Tops Sports Sleeveless Vest</Paragraph>
@@ -91,7 +91,7 @@ export default function ShopFrontPage(props) {
 
 		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
-			<Card.Cover source={require("../assets/tshirt4.jpg")} />
+			<Card.Cover source={require("../../assets/tshirt4.jpg")} />
 
 			<Card.Content>
 				<Paragraph>TRUEREVO Men's Sports Dry Fit Tank Top Vest for Running & Gym</Paragraph>
@@ -107,7 +107,7 @@ export default function ShopFrontPage(props) {
 		
 		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
-			<Card.Cover source={require("../assets/tshirt5.jpg")} />
+			<Card.Cover source={require("../../assets/tshirt5.jpg")} />
 
 			<Card.Content>
 				<Paragraph>Sportsqvest Men's Racerback Black</Paragraph>
@@ -118,7 +118,7 @@ export default function ShopFrontPage(props) {
 
 		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
 		<Card>
-			<Card.Cover source={require("../assets/tshirt6.jpg")} />
+			<Card.Cover source={require("../../assets/tshirt6.jpg")} />
 
 			<Card.Content>
 				<Paragraph>Dixcy Scott Men's Vest (Pack of 2)</Paragraph>

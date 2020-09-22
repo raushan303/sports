@@ -61,13 +61,13 @@ export default function ShopDetailsPage(props){
                         style={{marginTop:30}}
                   >
                         <View style={styles.sI_slider}>
-			            <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
+			            <Card.Cover style={styles.sI_image} source={require("../../assets/tshirt1.jpg")} />
 			      </View>
                         <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
+                              <Card.Cover style={styles.sI_image} source={require("../../assets/tshirt1.jpg")} />
 			      </View>
                         <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={require("../assets/tshirt1.jpg")} />
+                              <Card.Cover style={styles.sI_image} source={require("../../assets/tshirt1.jpg")} />
                         </View>
                   </ScrollView>
                   
@@ -141,12 +141,12 @@ export default function ShopDetailsPage(props){
                         showsHorizontalScrollIndicator={false}
                         style={{marginTop:40}}
                   >
-                        <RelatedItem {...props} img={require("../assets/tshirt1.jpg")}/>
-                        <RelatedItem {...props} img={require("../assets/tshirt2.jpg")}/>
-                        <RelatedItem {...props} img={require("../assets/tshirt3.jpg")}/>
-                        <RelatedItem {...props} img={require("../assets/tshirt4.jpg")}/>
-                        <RelatedItem {...props} img={require("../assets/tshirt5.jpg")}/>
-                        <RelatedItem {...props} img={require("../assets/tshirt6.jpg")}/>
+                        <RelatedItem {...props} img={require("../../assets/tshirt1.jpg")}/>
+                        <RelatedItem {...props} img={require("../../assets/tshirt2.jpg")}/>
+                        <RelatedItem {...props} img={require("../../assets/tshirt3.jpg")}/>
+                        <RelatedItem {...props} img={require("../../assets/tshirt4.jpg")}/>
+                        <RelatedItem {...props} img={require("../../assets/tshirt5.jpg")}/>
+                        <RelatedItem {...props} img={require("../../assets/tshirt6.jpg")}/>
 
                   </ScrollView>
 

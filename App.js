@@ -3,13 +3,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-
-import BottomTab from './components/BottomTab';
+import AuthRoute from './components/AuthRoute';
 
 export default function App() {
 	return (
 		<NavigationContainer>
-			<BottomTab/>	
+			<AuthRoute/>	
 		</NavigationContainer>	
 	);
 }

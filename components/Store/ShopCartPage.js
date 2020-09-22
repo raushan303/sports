@@ -76,12 +76,12 @@ export default function ShopCartPage(props){
                   />     
             </Appbar.Header>
 
-            <CartItemCard img={require("../assets/tshirt1.jpg")}/>
-            <CartItemCard img={require("../assets/tshirt2.jpg")}/>
-            <CartItemCard img={require("../assets/tshirt3.jpg")}/>
-            <CartItemCard img={require("../assets/tshirt4.jpg")}/>
-            <CartItemCard img={require("../assets/tshirt5.jpg")}/>
-            <CartItemCard img={require("../assets/tshirt6.jpg")}/>  
+            <CartItemCard img={require("../../assets/tshirt1.jpg")}/>
+            <CartItemCard img={require("../../assets/tshirt2.jpg")}/>
+            <CartItemCard img={require("../../assets/tshirt3.jpg")}/>
+            <CartItemCard img={require("../../assets/tshirt4.jpg")}/>
+            <CartItemCard img={require("../../assets/tshirt5.jpg")}/>
+            <CartItemCard img={require("../../assets/tshirt6.jpg")}/>  
 
             <View style={[styles.C_row,{width:"100%",height:60,backgroundColor:"white",marginBottom:10}]}>
                   <Paragraph style={{width:"53%",marginTop:15,textAlign:"center",fontSize:22,fontWeight:"bold",lineHeight:25}}>238</Paragraph>

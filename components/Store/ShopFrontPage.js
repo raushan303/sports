@@ -46,19 +46,19 @@ export default function ShopFrontPage(props){
             <Swiper style={styles.wrapper} showsButtons={false} autoplay={true}>
                   
                   <Card>
-                        <Card.Cover style={styles.F_img} source={require("../assets/poster1.jpg")}/>
+                        <Card.Cover style={styles.F_img} source={require("../../assets/poster1.jpg")}/>
                   </Card>
 
                   <Card>
-                        <Card.Cover style={styles.F_img} source={require("../assets/poster10.jpg")}/>
+                        <Card.Cover style={styles.F_img} source={require("../../assets/poster10.jpg")}/>
                   </Card>
 
                   <Card>
-                        <Card.Cover style={styles.F_img} source={require("../assets/football1.jpg")}/>
+                        <Card.Cover style={styles.F_img} source={require("../../assets/football1.jpg")}/>
                   </Card>
 
                   <Card>
-                        <Card.Cover style={styles.F_img} source={require("../assets/poster3.jpg")}/>
+                        <Card.Cover style={styles.F_img} source={require("../../assets/poster3.jpg")}/>
                   </Card>
             </Swiper>
 
@@ -83,18 +83,18 @@ export default function ShopFrontPage(props){
                   dotStyle={{marginLeft:18,marginRight:18,marginBottom:18}}
                   activeDotStyle={{marginLeft:18,marginRight:18,marginBottom:18}}
             >
-                        <FavouritesItem {...props} img={require("../assets/tshirt1.jpg")}/>
-                        <FavouritesItem {...props} img={require("../assets/tshirt2.jpg")}/>
-                        <FavouritesItem {...props} img={require("../assets/tshirt3.jpg")}/>
-                        <FavouritesItem {...props} img={require("../assets/tshirt4.jpg")}/>
-                        <FavouritesItem {...props} img={require("../assets/tshirt5.jpg")}/>
-                        <FavouritesItem {...props} img={require("../assets/tshirt6.jpg")}/>
+                        <FavouritesItem {...props} img={require("../../assets/tshirt1.jpg")}/>
+                        <FavouritesItem {...props} img={require("../../assets/tshirt2.jpg")}/>
+                        <FavouritesItem {...props} img={require("../../assets/tshirt3.jpg")}/>
+                        <FavouritesItem {...props} img={require("../../assets/tshirt4.jpg")}/>
+                        <FavouritesItem {...props} img={require("../../assets/tshirt5.jpg")}/>
+                        <FavouritesItem {...props} img={require("../../assets/tshirt6.jpg")}/>
             </Swiper>
             </View>
 
 
             <Card>
-                  <Card.Cover style={styles.F_img} source={require("../assets/player1.jpg")}/>
+                  <Card.Cover style={styles.F_img} source={require("../../assets/player1.jpg")}/>
             </Card>
 
 
