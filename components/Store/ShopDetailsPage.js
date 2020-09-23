@@ -47,7 +47,6 @@ export default function ShopDetailsPage(props){
 
                   var tmp,found=0;
                   tmp=await AsyncStorage.getItem('Cart');
-                  console.log(tmp,"hello1");
                   
                   if(tmp===null){
                         tmp=[];
@@ -67,7 +66,7 @@ export default function ShopDetailsPage(props){
                         setAdded(false)
             }
             isAdded();
-      },[isFocused])
+      },[isFocused,ItemDetails])
 
       const AddToCart = async ()=> {
 
@@ -83,7 +82,7 @@ export default function ShopDetailsPage(props){
                   setAdded(true)
             }
       }
-
+      
       return(
             <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
 
@@ -148,7 +147,6 @@ export default function ShopDetailsPage(props){
                         rounded={false}
                         color={"#58B19F"}
                         onChange={(num) => {
-                              console.log(num);
                         }}
                   />
 

@@ -87,7 +87,8 @@ export default function ShopCartPage(props){
 
             }
             getListItem();
-      },[isFocused])
+            CalculateCost();
+      },[isFocused,CartItems])
 
       const removeItems=async(item)=>{
 
@@ -99,6 +100,17 @@ export default function ShopCartPage(props){
            
             await AsyncStorage.setItem('Cart',JSON.stringify(Cart_Items));
             setCartItems(Cart_Items);
+            CalculateCost();
+            console.log(Price);
+      }
+
+      const CalculateCost = () => {
+            var cost=0;
+            console.log(CartItems)
+            CartItems.map((item)=>{
+                  cost+=item.price;
+            })
+            setPrice(cost);
       }
 
       return(
@@ -128,7 +140,7 @@ export default function ShopCartPage(props){
       </ScrollView>
 
             <View style={[styles.C_row,{width:"100%",height:60,backgroundColor:"white",marginBottom:3}]}>
-                  <Paragraph style={{width:"53%",marginTop:15,textAlign:"center",fontSize:22,fontWeight:"bold",lineHeight:25}}>238</Paragraph>
+                  <Paragraph style={{width:"53%",marginTop:15,textAlign:"center",fontSize:22,fontWeight:"bold",lineHeight:25}}>{Price}$</Paragraph>
                   <Button color="white" style={{width:"45%",height:40,backgroundColor:"blue",marginTop:10}}>Place Order</Button>
             </View>  
 
