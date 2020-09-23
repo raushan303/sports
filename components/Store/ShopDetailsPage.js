@@ -9,25 +9,21 @@ import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 
 import { Data } from '../../shared/TshirtData';
 
-const size_array=['S','XS','L','XL','M','L','T'];
-
-const details=[
-      "Regular fit is wider at the body, with a straight silhouette",
-      "Ribbed V-Neck",
-      "Short sleeves",
-      "100% recycled polyester interlock",
-      "Sweat-wicking Climalite fabric",
-      "Real Madrid crest"
-]
-
 function RelatedItem(props){
+
+      var ItemName= props.item.Paragraph;
+
+      if(ItemName.length>70){
+            ItemName = ItemName.substring(0,65)+"....";
+      }
+
       return(
-		<Card onPress={()=>{props.navigation.navigate("Details")}} style={styles.sI_related_item}>
-			<Card.Cover style={styles.sI_related_image} source={props.img} />
+		<Card onPress={()=>{props.navigation.navigate("Details",{item:props.item})}} style={styles.sI_related_item}>
+			<Card.Cover style={styles.sI_related_image} source={props.item.img} />
 
 			<Card.Content>
-				<Paragraph>CHKOKKO Men Gym Tank Tops Sports Sleeveless Vest</Paragraph>
-				<Paragraph style={{marginLeft:100,fontSize:25,marginTop:5,lineHeight:30}}>50$</Paragraph>
+                        <Paragraph>{ItemName}</Paragraph>
+                        <Paragraph style={{textAlign:"center",fontSize:25,marginTop:5,lineHeight:30}}>{props.item.price}$</Paragraph>
 			</Card.Content>
 		</Card>
       );
@@ -37,6 +33,8 @@ function RelatedItem(props){
 export default function ShopDetailsPage(props){
       
       const [selected,setSelected]=useState(-1); 
+
+      var ItemDetails = props.route.params.item;
 
       return(
             <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
@@ -63,26 +61,26 @@ export default function ShopDetailsPage(props){
                         style={{marginTop:30}}
                   >
                         <View style={styles.sI_slider}>
-			            <Card.Cover style={styles.sI_image} source={require("../../assets/tshirt1.jpg")} />
+			            <Card.Cover style={styles.sI_image} source={ItemDetails.img} />
 			      </View>
                         <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={require("../../assets/tshirt1.jpg")} />
+                              <Card.Cover style={styles.sI_image} source={ItemDetails.img} />
 			      </View>
                         <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={require("../../assets/tshirt1.jpg")} />
+                              <Card.Cover style={styles.sI_image} source={ItemDetails.img} />
                         </View>
                   </ScrollView>
                   
                   <View style={{backgroundColor:"#f5f6fa",marginTop:50}}>
                   <Card.Content style={styles.sI_content}>
-				<Paragraph style={styles.sI_paragraph}>fitternity Marvel Strength Cotton Tshirt for Men - Official Disney Marvel Merchandise - Round Collar - Half Sleeves - White Colour</Paragraph>
-				<Paragraph style={styles.sI_price}>50$</Paragraph>
+                  <Paragraph style={styles.sI_paragraph}>{ItemDetails.Paragraph}</Paragraph>
+                  <Paragraph style={styles.sI_price}>{ItemDetails.price}$</Paragraph>
                         <Title>Select Size</Title>
 			</Card.Content>
 
                   <Card.Content style={styles.sI_content_button}>
                   {
-                        size_array.map((size,index)=>{
+                        ItemDetails.size.map((size,index)=>{
                               return(
                                     <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
                               );
@@ -95,6 +93,7 @@ export default function ShopDetailsPage(props){
 
                   <InputSpinner
                         min={1}
+                        max={ItemDetails.quantity}
                         step={1}
                         value={1}
                         style={{marginLeft:100,marginTop:10,marginBottom:25,width:180}}
@@ -112,13 +111,13 @@ export default function ShopDetailsPage(props){
 
                   <Card.Content style={styles.sI_details}>
                         <Title style={styles.sI_prod_title1}>Product Details</Title>
-                        <Paragraph style={styles.sI_prod_paragraph1}>As the stadium fills, the buzz cascades down onto the Bernabéu pitch. But Real Madrid's superstars only have their minds on the ninety minutes ahead of them. Soft and moisture-absorbing, this adidas pre-match jersey keeps them dry and confident throughout those last-minute preparations. Its lightweight build will ensure it's a mainstay in your kit bag.</Paragraph>
-                        <Title style={styles.sI_prod_title2}>Details</Title>
+                        <Paragraph style={styles.sI_prod_paragraph1}>{ItemDetails.ProductDetails}</Paragraph>
                         
+                        <Title style={styles.sI_prod_title2}>Details</Title>
                         <View style={styles.sI_prod_paragraph2}>
                         {
 
-                        details.map((detail,index)=>{
+                        ItemDetails.Details.map((detail,index)=>{
                               return(
                                     <Unorderedlist key={index}>
                                     <Paragraph>
@@ -143,13 +142,16 @@ export default function ShopDetailsPage(props){
                         showsHorizontalScrollIndicator={false}
                         style={{marginTop:40}}
                   >
-                        <RelatedItem {...props} img={require("../../assets/tshirt1.jpg")}/>
-                        <RelatedItem {...props} img={require("../../assets/tshirt2.jpg")}/>
-                        <RelatedItem {...props} img={require("../../assets/tshirt3.jpg")}/>
-                        <RelatedItem {...props} img={require("../../assets/tshirt4.jpg")}/>
-                        <RelatedItem {...props} img={require("../../assets/tshirt5.jpg")}/>
-                        <RelatedItem {...props} img={require("../../assets/tshirt6.jpg")}/>
-
+                        {
+                              Data.map((item,index)=>{
+                                    if(item._id===ItemDetails._id){
+                                          return (<View></View>)
+                                    }
+                                    else{
+                                          return (<RelatedItem key={index} {...props} item={item}/>)
+                                    }
+                              })
+                        }
                   </ScrollView>
 
                   </View>

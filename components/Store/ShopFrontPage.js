@@ -9,18 +9,18 @@ import { Data } from '../../shared/TshirtData';
 
 function FavouritesItem(props){
 
-      var ItemName= props.Paragraph;
+      var ItemName= props.item.Paragraph;
 
       if(ItemName.length>70){
             ItemName = ItemName.substring(0,65)+"....";
       }
 
       return( 
-		<Card onPress={()=>{props.navigation.navigate("Details",{_id:props._id})}} style={styles.F_favourites_item}>
-			<Card.Cover style={{height:265,width:"90%",marginLeft:"5%",marginTop:5}} source={props.img} />
+		<Card onPress={()=>{props.navigation.navigate("Details",{item:props.item})}} style={styles.F_favourites_item}>
+			<Card.Cover style={{height:265,width:"90%",marginLeft:"5%",marginTop:5}} source={props.item.img} />
 			<Card.Content>
                         <Paragraph>{ItemName}</Paragraph>
-                        <Paragraph style={{textAlign:"center",fontSize:25,marginTop:5,lineHeight:30}}>{props.price}$</Paragraph>
+                        <Paragraph style={{textAlign:"center",fontSize:25,marginTop:5,lineHeight:30}}>{props.item.price}$</Paragraph>
 			</Card.Content>
 		</Card>
       );
@@ -90,9 +90,9 @@ export default function ShopFrontPage(props){
                   activeDotStyle={{marginLeft:18,marginRight:18,marginBottom:18}}
             >
             {
-                  Data.map((data,index)=>{
+                  Data.map((item,index)=>{
                         return(
-                              <FavouritesItem key={index} {...props} _id={data._id} img={data.img} Paragraph={data.Paragraph} price={data.price} />
+                              <FavouritesItem key={index} {...props} item={item} />
                         );
                   })
             }

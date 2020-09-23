@@ -11,23 +11,44 @@ const styles = StyleSheet.create({
 		marginTop:"8%"
 	},
 	s_row:{
-		marginTop:"3%",
 		width:"100%",
 		display:"flex",
 		flexDirection:"row",
-		justifyContent:"space-between"
+		justifyContent:"space-between",
+		flexWrap:"wrap",
+		marginBottom:20
 	},
 	s_col:{
+		marginTop:"3%",
 		width:"49%",
-		height:"100%",
+		height:290,
 		borderWidth:0,
 	},
 	s_price:{
 		fontSize:20,
 		marginTop:"5%",
-		marginLeft:"35%"
+		textAlign:"center"
 	}
 })
+
+function ItemCard(props){
+
+	var ItemName = props.item.Paragraph;
+
+	if(ItemName.length>30){
+		ItemName = ItemName.substring(0,30)+"....";
+	}		
+
+	return(
+	<Card onPress={()=>{props.navigation.navigate("Details",{item:props.item})}} style={styles.s_col}>
+		<Card.Cover source={props.item.img} />
+		<Card.Content>
+			<Paragraph>{ItemName}</Paragraph>
+			<Paragraph style={styles.s_price}>{props.item.price}$</Paragraph>
+		</Card.Content>
+	</Card>
+	);
+}
 
 export default function ShopFrontPage(props) {
 	
@@ -49,88 +70,14 @@ export default function ShopFrontPage(props) {
                   />
 		</Appbar.Header>
 
-	<View style={styles.s_row}>
-
-
-		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
-		<Card>
-			<Card.Cover source={require("../../assets/tshirt1.jpg")} />
-
-			<Card.Content>
-				<Paragraph>Veirdo Men's Regular Fit T-Shirt</Paragraph>
-				<Paragraph style={styles.s_price}>50$</Paragraph>
-			</Card.Content>
-		</Card>
-		</Button>
-
-		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
-		<Card>
-			<Card.Cover source={require("../../assets/tshirt2.jpg")} />
-
-			<Card.Content>
-				<Paragraph>Wrath Men's Regular Fit T-Shirt</Paragraph>
-				<Paragraph style={styles.s_price}>32$</Paragraph>
-			</Card.Content>
-
-		</Card>
-		</Button>
-
-	</View>
-
-	<View style={styles.s_row}>
-
-		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
-		<Card>
-			<Card.Cover source={require("../../assets/tshirt3.jpg")} />
-
-			<Card.Content>
-				<Paragraph>CHKOKKO Men Gym Tank Tops Sports Sleeveless Vest</Paragraph>
-				<Paragraph style={styles.s_price}>50$</Paragraph>
-			</Card.Content>
-		</Card>
-		</Button>
-
-		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
-		<Card>
-			<Card.Cover source={require("../../assets/tshirt4.jpg")} />
-
-			<Card.Content>
-				<Paragraph>TRUEREVO Men's Sports Dry Fit Tank Top Vest for Running & Gym</Paragraph>
-				<Paragraph style={styles.s_price}>32$</Paragraph>
-			</Card.Content>
-
-		</Card>
-		</Button>
-
-	</View>
-
-	<View style={[styles.s_row,{marginBottom:20}]}>
-		
-		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
-		<Card>
-			<Card.Cover source={require("../../assets/tshirt5.jpg")} />
-
-			<Card.Content>
-				<Paragraph>Sportsqvest Men's Racerback Black</Paragraph>
-				<Paragraph style={styles.s_price}>50$</Paragraph>
-			</Card.Content>
-		</Card>
-		</Button>
-
-		<Button onPress={()=>props.navigation.navigate('Details')} style={styles.s_col}>
-		<Card>
-			<Card.Cover source={require("../../assets/tshirt6.jpg")} />
-
-			<Card.Content>
-				<Paragraph>Dixcy Scott Men's Vest (Pack of 2)</Paragraph>
-				<Paragraph style={styles.s_price}>32$</Paragraph>
-			</Card.Content>
-
-		</Card>
-		</Button>
-
-	</View>
-
+		<View style={styles.s_row}>
+		{
+			Data.map((item,index)=>{
+				return( <ItemCard key={index} {...props} item={item}/>);
+			})
+		}
+		</View>
+	
 		</ScrollView>
 	
 	);
