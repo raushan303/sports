@@ -12,7 +12,6 @@ import { DrawerContent } from './CustomDrawer'
 
 const Drawer = createDrawerNavigator();
 
-
 export default function ShopStartPage(){
 
       return(

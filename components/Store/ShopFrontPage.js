@@ -5,7 +5,8 @@ import Swiper from 'react-native-swiper'
 import { Avatar, Card, Title, Paragraph, Appbar, Divider} from 'react-native-paper';
 import Button from 'apsl-react-native-button';
 
-import { Data } from '../../shared/TshirtData';
+import { Data, ThirdKit } from '../../shared/TshirtData';
+
 
 function FavouritesItem(props){
 
@@ -25,8 +26,6 @@ function FavouritesItem(props){
 		</Card>
       );
 }
-
-
 
 export default function ShopFrontPage(props){
 
@@ -50,22 +49,15 @@ export default function ShopFrontPage(props){
             </Appbar.Header>
 
             <Swiper style={styles.wrapper} showsButtons={false} autoplay={true}>
-                  
-                  <Card>
-                        <Card.Cover style={styles.F_img} source={require("../../assets/poster1.jpg")}/>
-                  </Card>
-
-                  <Card>
-                        <Card.Cover style={styles.F_img} source={require("../../assets/poster10.jpg")}/>
-                  </Card>
-
-                  <Card>
-                        <Card.Cover style={styles.F_img} source={require("../../assets/football1.jpg")}/>
-                  </Card>
-
-                  <Card>
-                        <Card.Cover style={styles.F_img} source={require("../../assets/poster3.jpg")}/>
-                  </Card>
+            {
+                  ThirdKit.map((img,index)=>{
+                        return(
+                              <Card key={index}>
+                                    <Card.Cover style={styles.F_img} source={img}/>
+                              </Card>
+                        );
+                  })
+            }
             </Swiper>
 
             <Title style={styles.F_title}>

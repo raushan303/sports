@@ -5,6 +5,7 @@ export const Data=[
             category:"clothings",
             Paragraph:"fitternity Marvel Strength Cotton Tshirt for Men - Official Disney Marvel Merchandise - Round Collar - Half Sleeves - White Colour",
             img:require("../assets/tshirt1.jpg"),
+            img_collection:[require("../assets/tshirt1.jpg"),require("../assets/tshirt1.jpg"),require("../assets/tshirt1.jpg")],
             price:243,
             quantity:5,
             size:['S','XS','L','XL','M'],
@@ -24,6 +25,7 @@ export const Data=[
             category:"clothings",
             Paragraph:"Wrath Men's Regular Fit T-Shirt",
             img:require("../assets/tshirt2.jpg"),
+            img_collection:[require("../assets/tshirt2.jpg"),require("../assets/tshirt2.jpg"),require("../assets/tshirt2.jpg")],
             price:542,
             quantity:3,
             size:['S','L','XL','M'],
@@ -43,6 +45,7 @@ export const Data=[
             category:"clothings",
             Paragraph:"Veirdo Men's Regular Fit T-Shirt",
             img:require("../assets/tshirt3.jpg"),
+            img_collection:[require("../assets/tshirt3.jpg"),require("../assets/tshirt3.jpg"),require("../assets/tshirt3.jpg")],
             price:305,
             quantity:3,
             size:['T','S','XS','XXL','XL','M'],
@@ -63,6 +66,7 @@ export const Data=[
             category:"clothings",
             Paragraph:"CHKOKKO Men's Gym Regular Fit Full Sleeves Polo T-Shirt",
             img:require("../assets/tshirt4.jpg"),
+            img_collection:[require("../assets/tshirt4.jpg"),require("../assets/tshirt4.jpg"),require("../assets/tshirt4.jpg")],
             price:419,
             quantity:9,
             size:['XXL','XL','M','B'],
@@ -81,6 +85,7 @@ export const Data=[
             category:"clothings",
             Paragraph:"Solid Men Polo Neck White, Black T-Shirt",
             img:require("../assets/tshirt5.jpg"),
+            img_collection:[require("../assets/tshirt5.jpg"),require("../assets/tshirt5.jpg"),require("../assets/tshirt5.jpg")],
             price:382,
             quantity:5,
             size:['S','L','M'],
@@ -99,6 +104,7 @@ export const Data=[
             category:"clothings",
             Paragraph:"Men Regular Fit Color Block Casual Shirt",
             img:require("../assets/tshirt6.jpg"),
+            img_collection:[require("../assets/tshirt6.jpg"),require("../assets/tshirt6.jpg"),require("../assets/tshirt6.jpg")],
             price:610,
             quantity:11,
             size:['XS','L','M','2XL'],
@@ -115,3 +121,11 @@ export const Data=[
       }
       
 ];
+
+
+export const ThirdKit=[
+      require("../assets/poster1.jpg"),
+      require("../assets/poster10.jpg"),
+      require("../assets/football1.jpg"),
+      require("../assets/poster3.jpg")
+]

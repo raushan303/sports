@@ -1,9 +1,11 @@
-import React,{useState} from 'react';
-import { StyleSheet, Text, View, ScrollView} from 'react-native';
+import React,{useState, useEffect} from 'react';
+import { StyleSheet, Text, View, ScrollView, AsyncStorage} from 'react-native';
 import Button from 'apsl-react-native-button';
+import { useIsFocused } from "@react-navigation/native";
 
 import Unorderedlist from 'react-native-unordered-list';
 import InputSpinner from "react-native-input-spinner";
+import Swiper from 'react-native-swiper'
 
 import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 
@@ -32,9 +34,55 @@ function RelatedItem(props){
 
 export default function ShopDetailsPage(props){
       
-      const [selected,setSelected]=useState(-1); 
+      const [selected,setSelected]=useState(-1);
+
+      const [Added,setAdded] = useState(false); 
+
+      const isFocused = useIsFocused();
 
       var ItemDetails = props.route.params.item;
+
+      useEffect(() => {
+            const isAdded=async()=>{
+
+                  var tmp,found=0;
+                  tmp=await AsyncStorage.getItem('Cart');
+                  console.log(tmp,"hello1");
+                  
+                  if(tmp===null){
+                        tmp=[];
+                        await AsyncStorage.setItem('Cart',JSON.stringify(tmp));
+                  }
+
+                  tmp=JSON.parse(tmp);
+
+                  for(var i in tmp){
+                        if(tmp[i]._id===ItemDetails._id){
+                              found=1;
+                              setAdded(true);
+                              break;
+                        }
+                  }  
+                  if(!found)
+                        setAdded(false)
+            }
+            isAdded();
+      },[isFocused])
+
+      const AddToCart = async ()=> {
+
+            if(Added){
+                  props.navigation.navigate("Cart");
+            }
+            else{
+                  var tmp
+                  tmp=await AsyncStorage.getItem('Cart');
+                  tmp=JSON.parse(tmp);
+                  tmp=[...tmp,ItemDetails];
+                  await AsyncStorage.setItem('Cart',JSON.stringify(tmp));
+                  setAdded(true)
+            }
+      }
 
       return(
             <ScrollView style={styles.sI_container} showsVerticalScrollIndicator={false}>
@@ -54,24 +102,23 @@ export default function ShopDetailsPage(props){
                  
                   <Card>
 
-                  <ScrollView 
-                        showsHorizontalScrollIndicator={false}
-                        horizontal={true}
-                        pagingEnabled
-                        style={{marginTop:30}}
+                  <Swiper showsButtons={false}
+                        style={{marginTop:30,height:400}}
+                        dotStyle={{marginLeft:10,marginRight:10,marginBottom:12}}
+                        activeDotStyle={{marginLeft:10,marginRight:10,marginBottom:12}}
                   >
-                        <View style={styles.sI_slider}>
-			            <Card.Cover style={styles.sI_image} source={ItemDetails.img} />
-			      </View>
-                        <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={ItemDetails.img} />
-			      </View>
-                        <View style={styles.sI_slider}>
-                              <Card.Cover style={styles.sI_image} source={ItemDetails.img} />
-                        </View>
-                  </ScrollView>
+                        {
+                              ItemDetails.img_collection.map((img,index)=>{
+                                    return(
+                                          <View key={index.toString()} style={styles.sI_slider}>
+                                                <Card.Cover style={styles.sI_image} source={img} />
+                                          </View>
+                                    );
+                              })
+                        }
+                  </Swiper>
                   
-                  <View style={{backgroundColor:"#f5f6fa",marginTop:50}}>
+                  <View style={{backgroundColor:"#f5f6fa"}}>
                   <Card.Content style={styles.sI_content}>
                   <Paragraph style={styles.sI_paragraph}>{ItemDetails.Paragraph}</Paragraph>
                   <Paragraph style={styles.sI_price}>{ItemDetails.price}$</Paragraph>
@@ -82,7 +129,7 @@ export default function ShopDetailsPage(props){
                   {
                         ItemDetails.size.map((size,index)=>{
                               return(
-                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
+                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index.toString()} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
                               );
                         })
                   }
@@ -106,7 +153,7 @@ export default function ShopDetailsPage(props){
                   />
 
                   <Card.Actions>
-		            <Button onPress={()=>{props.navigation.navigate('Cart')}} textStyle={{color:"white"}} style={styles.sI_addCart}>Add To Cart</Button>
+		            <Button onPress={()=>{AddToCart();}} textStyle={{color:"white"}} style={styles.sI_addCart}>{Added?"Go To Cart":"Add To Cart"}</Button>
 	            </Card.Actions>
 
                   <Card.Content style={styles.sI_details}>
@@ -119,7 +166,7 @@ export default function ShopDetailsPage(props){
 
                         ItemDetails.Details.map((detail,index)=>{
                               return(
-                                    <Unorderedlist key={index}>
+                                    <Unorderedlist key={index.toString()}>
                                     <Paragraph>
                                           {detail}  
                                     </Paragraph>
@@ -145,10 +192,10 @@ export default function ShopDetailsPage(props){
                         {
                               Data.map((item,index)=>{
                                     if(item._id===ItemDetails._id){
-                                          return (<View></View>)
+                                          return (<View key={index.toString()}></View>)
                                     }
                                     else{
-                                          return (<RelatedItem key={index} {...props} item={item}/>)
+                                          return (<RelatedItem key={index.toString()} {...props} item={item}/>)
                                     }
                               })
                         }
@@ -198,7 +245,7 @@ const styles = StyleSheet.create({
       },
 	sI_price:{
 		fontSize:30,
-		marginTop:"8%",
+		marginTop:"5%",
             marginLeft:"43%",
             fontWeight:"400",
             lineHeight:40
