@@ -10,6 +10,7 @@ import Swiper from 'react-native-swiper'
 import { Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
 
 import { Data } from '../../shared/TshirtData';
+import { set } from 'react-native-reanimated';
 
 function RelatedItem(props){
 
@@ -34,19 +35,21 @@ function RelatedItem(props){
 
 export default function ShopDetailsPage(props){
       
-      const [selected,setSelected]=useState(-1);
+      const [selected,setSelected] = useState(-1);
+      const [size,setSize] = useState('');
+      const [quantity,setQuantity] = useState(1);
 
       const [Added,setAdded] = useState(false); 
 
       const isFocused = useIsFocused();
 
       var ItemDetails = props.route.params.item;
+      
 
       useEffect(() => {
             const isAdded=async()=>{
-
                   var tmp,found=0;
-                  tmp=await AsyncStorage.getItem('Cart');
+                  tmp = await AsyncStorage.getItem('Cart');
                   
                   if(tmp===null){
                         tmp=[];
@@ -56,7 +59,7 @@ export default function ShopDetailsPage(props){
                   tmp=JSON.parse(tmp);
 
                   for(var i in tmp){
-                        if(tmp[i]._id===ItemDetails._id){
+                        if(tmp[i]._id === ItemDetails._id && tmp[i].selectedSize===size){
                               found=1;
                               setAdded(true);
                               break;
@@ -66,20 +69,28 @@ export default function ShopDetailsPage(props){
                         setAdded(false)
             }
             isAdded();
-      },[isFocused,ItemDetails])
+      },[isFocused,ItemDetails,size])
+      
 
       const AddToCart = async ()=> {
 
-            if(Added){
-                  props.navigation.navigate("Cart");
+            if(size===''){
+                  alert('Select size pls');
             }
             else{
-                  var tmp
-                  tmp=await AsyncStorage.getItem('Cart');
-                  tmp=JSON.parse(tmp);
-                  tmp=[...tmp,ItemDetails];
-                  await AsyncStorage.setItem('Cart',JSON.stringify(tmp));
-                  setAdded(true)
+                  if(Added){
+                        props.navigation.navigate("Cart");
+                  }
+                  else{
+                        var tmp
+                        tmp=await AsyncStorage.getItem('Cart');
+                        tmp=JSON.parse(tmp);
+                        ItemDetails.selectedSize=size;
+                        ItemDetails.selectedQuantity=quantity;
+                        tmp=[...tmp,ItemDetails];
+                        await AsyncStorage.setItem('Cart',JSON.stringify(tmp));
+                        setAdded(true)
+                  }
             }
       }
       
@@ -128,7 +139,7 @@ export default function ShopDetailsPage(props){
                   {
                         ItemDetails.size.map((size,index)=>{
                               return(
-                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index)}} key={index.toString()} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
+                                    <Button textStyle={selected===index?{color:"white"}:{color:"blue"}} onPress={()=>{setSelected(index);setSize(size);}} key={index.toString()} style={[styles.sI_select_size,(selected===index?styles.sI_selected_button:'')]}>{size}</Button>
                               );
                         })
                   }
@@ -147,6 +158,7 @@ export default function ShopDetailsPage(props){
                         rounded={false}
                         color={"#58B19F"}
                         onChange={(num) => {
+                              setQuantity(num);
                         }}
                   />
 

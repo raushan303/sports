@@ -83,7 +83,7 @@ function DrawNavigator(props) {
       return (
       <AuthContext.Provider value={Auth}>
             {
-                  loginState.userToken === null ? (
+                  !loginState.userToken? (
                         <MainStack />
                   ) : (
                         <BottomTab/>

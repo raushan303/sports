@@ -46,7 +46,7 @@ function CartItemCard(props){
             <InputSpinner
                   min={1}
                   step={1}
-                  value={1}
+                  value={props.item.selectedQuantity}
                   showBorder={true}
                   rounded={false}
                   color={"#58B19F"}
@@ -54,6 +54,7 @@ function CartItemCard(props){
                   width={100}
                   style={{marginLeft:10}}
                   onChange={(num) => {
+                        props.ChangeQuantity(num,props.item._id,props.item.selectedSize);
                   }}
             />
             <Paragraph style={{width:"50%",textAlign:"right",fontSize:22,fontWeight:"bold",lineHeight:25}}>{props.item.price}$</Paragraph>
@@ -72,46 +73,73 @@ export default function ShopCartPage(props){
 
       const [CartItems,setCartItems]=useState([]);
       const [Price,setPrice]=useState(0);
+      const [totalQuantity,setTotalQuantity] = useState(0);
+
       const isFocused = useIsFocused();
 
       useEffect(()=>{
             const getListItem = async()=>{
-                  
                   var Cart_Items = await AsyncStorage.getItem('Cart');
-            
                   if(Cart_Items===null){
                         Cart_Items=[]
                   }
                   Cart_Items=JSON.parse(Cart_Items);
                   setCartItems(Cart_Items);
-
             }
             getListItem();
+           
+      },[isFocused])
+
+      useEffect(()=>{
+            CalculateTotalQuantity();
+      },[CartItems])
+
+      useEffect(()=>{
             CalculateCost();
-      },[isFocused,CartItems])
+      },[totalQuantity])
 
       const removeItems=async(item)=>{
 
             var Cart_Items=CartItems;
            
             Cart_Items=Cart_Items.filter((c_item)=>{
-                  return c_item._id!==item._id;
+                  return c_item._id!==item._id || c_item.selectedSize!==item.selectedSize;
             });
            
             await AsyncStorage.setItem('Cart',JSON.stringify(Cart_Items));
             setCartItems(Cart_Items);
-            CalculateCost();
-            console.log(Price);
       }
 
       const CalculateCost = () => {
             var cost=0;
-            console.log(CartItems)
             CartItems.map((item)=>{
-                  cost+=item.price;
+                  cost+=(item.price*item.selectedQuantity);
             })
             setPrice(cost);
       }
+
+      const CalculateTotalQuantity = () => {
+            var qty=0;
+            CartItems.map((item)=>{
+                  qty+=item.selectedQuantity;
+            })
+            setTotalQuantity(qty);
+      }
+
+      const ChangeQuantity = async(qty,item_id,item_size) => {
+
+            var Cart_Items=CartItems;
+           
+            Cart_Items=Cart_Items.map((c_item)=>{
+                  if(c_item._id===item_id && c_item.selectedSize===item_size){
+                        c_item.selectedQuantity=qty;
+                  }
+                  return c_item;
+            });
+           
+            await AsyncStorage.setItem('Cart',JSON.stringify(Cart_Items));
+            setCartItems(Cart_Items); 
+      } 
 
       return(
       
@@ -132,7 +160,7 @@ export default function ShopCartPage(props){
             {
                   CartItems.map((item,index)=>{
                         return(
-                              <CartItemCard key={index.toString()} {...props} item={item} removeItems={removeItems}/> 
+                              <CartItemCard key={index.toString()} {...props} item={item} removeItems={removeItems} ChangeQuantity={ChangeQuantity}/> 
                         );
                   })
             }
